@@ -7,10 +7,10 @@ This project demonstrates the AI Development Workflow through various tasks desi
 
 ## 👥 Group Members
 
-1. Amahle Mathebula  
-2. Victor Muthomi  
-3. Achieng Verra  
-4. Brian Sangura  
+1. Tony Wabuko
+2. Jacob Kiniga
+3. Neema Monanti
+4. John Kuria
 5. Geofrey Killeta
 
 ---

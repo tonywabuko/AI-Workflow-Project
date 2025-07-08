@@ -11,7 +11,7 @@ This project demonstrates the AI Development Workflow through various tasks desi
 2. Jacob Kiniga
 3. Neema Monanti
 4. John Kuria
-5. Geofrey Killeta
+5. Brian Sangura
 
 ---
 

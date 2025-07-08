@@ -1,0 +1,16 @@
+### 1. Problem Definition
+
+**Problem:**  
+Many first-year university students struggle to adjust to the demands of tertiary education. Institutions often lack timely insight into which students are at risk of failing until it is too late. An AI system can help predict which students are likely to fail based on their academic records, background, and engagement data. This allows universities to intervene early and provide support.
+
+**Objectives:**  
+1. Predict at-risk first-year students based on academic and behavioral indicators.  
+2. Enable academic advisors to provide timely support and interventions.  
+3. Improve student pass rates and reduce university dropout rates.
+
+**Stakeholders:**  
+- Academic advisors and student support staff.  
+- First-year university students.
+
+**Key Performance Indicator (KPI):**  
+**Recall (Sensitivity):** Measures how many truly at-risk students were successfully identified by the model. High recall ensures fewer students in need of help are missed.

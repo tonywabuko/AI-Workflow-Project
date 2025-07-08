@@ -1,0 +1,17 @@
+1. Short Reflection: Hardest Part of the Workflow
+The most challenging phase was Data Strategy & Preprocessing for the hospital case study. Key reasons:
+
+Data Fragmentation & Privacy: Hospital data is siloed across departments (EMR, labs, imaging), requiring complex integration while adhering to HIPAA. Anonymizing data without losing critical features (e.g., patient demographics for bias analysis) was nontrivial.
+
+Class Imbalance: Medical datasets often have rare outcomes (e.g., sepsis onset). Oversampling minority classes risked overfitting; undersampling sacrificed crucial patterns.
+
+Ethical Trade-Offs: Balancing model accuracy with fairness (e.g., ensuring low false negatives for high-risk patients) conflicted with resource constraints (e.g., alert fatigue for clinicians).
+
+2. Suggested Improvements (Given More Time/Resources)
+Synthetic Data Generation: Use GANs to create realistic, privacy-compliant training data for rare conditions.
+
+Bias Auditing Pipeline: Integrate tools like AI Fairness 360 to proactively detect demographic skews during preprocessing.
+
+Model Interpretability: Deploy SHAP/LIME alongside the model to explain predictions to clinicians (e.g., "The model flagged sepsis due to elevated lactate + low BP").
+
+Cloud-Based MLOps: Use AWS SageMaker/Azure ML for automated retraining when data drift is detected (e.g., new lab test protocols).

@@ -1,0 +1,12 @@
+### 3. Model Development
+
+**Chosen Model:**  
+**Random Forest Classifier** – It’s a robust ensemble method that works well with tabular data, handles both numerical and categorical variables, and provides feature importance scores. It's also less prone to overfitting compared to single decision trees.
+
+**Data Splitting Strategy:**  
+- 70% for training  
+- 30% for testing (we used scikit-learn’s `train_test_split()` to randomly divide the dataset)
+
+**Hyperparameters to Tune:**
+1. `n_estimators`: Controls how many trees are in the forest. More trees = better accuracy, but slower computation.
+2. `max_depth`: Limits the depth of each tree to prevent overfitting and improve generalization.

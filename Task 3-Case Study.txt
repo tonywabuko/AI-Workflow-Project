@@ -1,0 +1,56 @@
+Case Study: Model Selection and Deployment for Hospital Data
+Model Selection
+For predicting patient readmission risk within 30 days, a tree-based classifier like XGBoost balances performance and interpretability.
+XGBoost handles nonlinear relationships and missing values common in EHR data without extensive preprocessing.
+Feature importance scores help clinicians understand drivers of readmission, aiding trust and acceptance.
+
+Confusion Matrix and Metrics
+Below is a confusion matrix for a test set of 1,000 patients, where “Positive” means predicted high readmission risk.
+
+|                    | Actual Positive| Actual Negative | Total   | 
+| Predicted Positive | 120 (True Pos) | 30 (False Pos) | 150    | 
+| Predicted Negative | 40 (False Neg) | 810 (True Neg) | 850    | 
+| Total              | 160            | 840            | 1,000  | 
+
+
+Precision measures how many predicted high-risk patients truly return:
+Precision = TP / (TP + FP) = 120 / (120 + 30) = 0.80
+Recall measures how many true readmissions we caught:
+Recall = TP / (TP + FN) = 120 / (120 + 40) = 0.75
+
+Deployment Steps
+- Data Pipeline and Preprocessing
+- Ingest de-identified EHR extracts via secure APIs.
+- Apply consistent feature transformations in a reproducible pipeline.
+- Model Containerization
+- Package XGBoost model and preprocessing code into a Docker container.
+- Include environment specs for dependencies.
+- Continuous Integration / Continuous Deployment
+- Automate testing of new model versions on hold-out data.
+- Deploy containers to a managed Kubernetes cluster in the hospital’s private cloud.
+- Integration with Clinical Systems
+- Expose a gRPC or REST endpoint within the hospital network.
+- Ensure low-latency responses to feed risk scores into EHR dashboards.
+- Monitoring and Maintenance
+- Track data drift, latency, and error rates with Prometheus and Grafana.
+- Trigger alerts when model performance changes or data schema shifts.
+
+Regulatory Compliance (HIPAA)
+All deployment activities must adhere to HIPAA’s Privacy and Security Rules.
+- Data Encryption
+- Encrypt data at rest and in transit using AES-256 and TLS 1.2+.
+- Access Control
+- Enforce role-based access with multi-factor authentication for clinicians and IT staff.
+- Audit Logging
+- Record every API call, user action, and model inference for forensic review.
+- Business Associate Agreements
+- Sign BAAs with any cloud or third-party vendors handling Protected Health Information.
+- Staff Training
+- Provide annual HIPAA security awareness training for developers and operators.
+
+Next Steps and Further Considerations
+In addition to the above, consider:
+- Explainability tools (SHAP or LIME) for case-by-case risk explanations.
+- Regular model retraining to accommodate changes in patient demographics or treatment protocols.
+- Integrating patient consent management for secondary use of data.
+- Conducting bias audits to ensure equitable performance across patient subgroups.

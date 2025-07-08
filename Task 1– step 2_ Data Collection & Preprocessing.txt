@@ -1,0 +1,55 @@
+### 2. Data Collection & Preprocessing
+
+**Data Sources:**
+
+1. **Realistic Source** – *Academic Records:*  
+   Student grade data from assignments, tests, attendance, and final exams collected through the university’s Learning Management System (LMS).
+
+2. **Hypothetical Source** – *Behavioral Survey Data:*  
+   Self-reported surveys capturing study habits, stress levels, sleep patterns, and time spent on academic tasks. This gives context beyond academic performance.
+
+---
+
+**Potential Bias:**  
+There may be an **underrepresentation of students from low-income or rural backgrounds** who have limited access to online platforms or less consistent data entries. This can lead to biased predictions and reinforce educational inequalities if not accounted for during data preparation.
+
+---
+
+**Preprocessing Steps:**
+
+1. **Handling Missing Values:**  
+   - Used mode imputation for categorical columns (e.g., `guardian`, `reason`)  
+   - Used median imputation for numerical columns (e.g., `G1`, `absences`)
+
+2. **Normalization:**  
+   - Scaled numerical grade columns (`G1`, `G2`, `absences`) to a 0–1 range using Min-Max scaling for balanced model input.
+
+3. **Encoding Categorical Variables:**  
+   - Applied **One-Hot Encoding** to columns such as `school`, `sex`, `address`, `famsize`, and `Pstatus` to convert text labels into machine-readable binary format.
+
+---
+
+**💻 Practical Demo – One-Hot Encoding (Google Colab):**
+
+Used the UCI Student Performance dataset (`student-mat.csv`) and applied preprocessing in Colab.
+
+```python
+# Upload the CSV file
+from google.colab import files
+uploaded = files.upload()
+
+# Load and process dataset
+import pandas as pd
+df = pd.read_csv('student-mat.csv', sep=';')
+
+# Columns to encode
+categorical_columns = ['school', 'sex', 'address', 'famsize', 'Pstatus']
+
+# Apply One-Hot Encoding
+df_encoded = pd.get_dummies(df, columns=categorical_columns)
+
+# Preview the encoded data
+print(df_encoded.head())
+
+# Save encoded dataset
+df_encoded.to_csv('student_encoded.csv', index=False)

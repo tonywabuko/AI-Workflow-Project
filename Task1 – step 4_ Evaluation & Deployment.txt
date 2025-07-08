@@ -1,0 +1,30 @@
+### 4. Evaluation & Deployment
+
+**Evaluation Metrics:**
+
+1. **Recall** – Measures how well the model identifies actual failing students.  
+   Important in this use case because missing an at-risk student (false negative) could mean they don’t get the support they need.
+
+2. **Precision** – Indicates how many of the students predicted as "at risk" actually are.  
+   Helps reduce unnecessary interventions and resource waste.
+
+---
+
+**What is Concept Drift?**  
+Concept drift happens when the patterns in data change over time — for example, if future students study differently or external factors affect performance (like remote learning post-COVID).
+
+**How to Monitor It:**  
+- Periodically re-evaluate model performance using new data.  
+- Use **data and concept drift monitoring tools** (e.g., River, Alibi Detect).  
+- Retrain the model every semester or academic year using recent data.
+
+---
+
+**Technical Deployment Challenge:**  
+**Scalability** — Integrating the model into the university's LMS (Learning Management System) or advising dashboard may require back-end engineering support.  
+It must handle:
+- Multiple course loads
+- Real-time predictions
+- Secure student data processing
+
+This also introduces potential **data privacy risks** if not handled properly.

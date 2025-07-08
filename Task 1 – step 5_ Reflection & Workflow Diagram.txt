@@ -1,0 +1,13 @@
+### 5. Reflection
+
+**What was the most challenging part of the workflow?**  
+The most challenging part was **data preprocessing**, especially handling all the categorical variables. Initially, I only encoded a few columns, but the model failed because some text columns were still present. It taught me how important it is to inspect all data types and transform them properly before model training.
+
+**How would you improve your approach with more time/resources?**  
+With more time, I would:
+- Integrate more diverse data sources (like student surveys or learning behavior)
+- Add feature engineering (e.g., total study time)
+- Try multiple models (like logistic regression or gradient boosting)
+- Set up automated retraining pipelines for concept drift
+
+This experience improved my understanding of how real-world AI systems are developed from scratch.

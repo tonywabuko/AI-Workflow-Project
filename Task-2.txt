@@ -1,0 +1,56 @@
+🔹 1. Problem Definition (5 points)  
+Problem:  
+There is a high rate of re-admission (within 30 days) in hospitals, leading to increased total cost of care, lower patient outcomes, and potential penalties from health insurers/government.  
+
+Goal:  
+To improve the problem, by building an AI model that predicts if a patient (that has just been discharged) is at high risk of being re-admitted within 30 days, so actions can be taken with that patient prior to being discharged.  
+
+Stakeholders:  
+Hospital administration (reducing costs/penalties)  
+
+Medical staff (take actions ahead of patient discharge)  
+
+Patients (increase patient outcome as a result of fewer re-admissions)  
+
+IT department (integration into existing system)  
+
+Legal/compliance team (regulation)  
+
+🔹 2. Data Strategy (10 points)  
+a) Data Sources  
+Electronic Health Records (EHR):  
+ICD diagnosis codes  
+
+Vital signs/lab results  
+
+Length of stay, prior admissions  
+
+Drugs prescribed  
+
+Demographics:  
+Age, gender, race  
+
+Insurance, ZIP code  
+
+Social Determinants of Health (optional):  
+Housing, employment, support of family  
+
+b) Ethical Considerations  
+Patient Privacy:  
+Sensitive health data must be de-identified and encrypted; must comply with HIPAA (USA) or similar.  
+
+Bias in Data:  
+AI models may replicate historical biases in care delivery (for example, by race or type of insurance), and thus reinforce systemic disparities.  
+
+c)  Preprocessing Pipeline  
+Step 1: Data Cleaning  
+Remove duplicates and prepare missing data. Use mean imputing for labs, and Unknown for categorical.  
+
+Step 2: Feature Engineering  
+Find comorbidity scores (i.e., Charlson Index)  
+
+Time since last admission  
+
+Number of medications   
+
+Binary flag - discharged to  

@@ -1,0 +1,33 @@
+# Ethics and Trade Offs
+Bias in medical AI Impact
+Biased training data in healthcare AI isn’t just a technical flaw—it’s an ethical risk with real-world consequences. When datasets underrepresent certain groups (e.g., women, rural patients, minority communities), predictive models can systematically underestimate readmission risk for those populations. This leads to:
+- Missed interventions for vulnerable patients
+- Unequal allocation of care resources
+- Erosion of clinical trust and patient safety
+- Reinforcement of existing health disparities
+- Underestimated risk scores, which may cause at-risk patients to miss crucial interventions.
+- Unequal access to follow-up care, further entrenching health disparities.
+- Loss of trust in AI systems, particularly among already marginalized communities.
+
+# Bias mitigation strategy
+Bias mitigation strategies improves faireness, enhance clinical trust and ensure regulatory trust. These strategies include:
+- Stratified Sampling: Curate balanced datasets with representative samples across age, gender, ethnicity, location, and socioeconomic status.
+- Fairness-Aware Evaluation: Analyze model performance across subgroups using fairness metrics such as Equal Opportunity Difference and Disparate Impact.
+- Bias Audits: Conduct regular, documented audits to track model behavior over time.
+- Stakeholder Review: Include community representatives and ethicists in model review processes to incorporate diverse perspectives.
+
+# Model accuracy vs interpretability (based on task 3)
+Accuracy
+The confusion matrix derived from the test set of 1,000 patients demonstrates how the XGBoost model performed in predicting 30-day readmission risk. Out of the total cases, the model correctly identified 120 patients who were truly at high risk (true positives), while incorrectly flagging 30 who were not (false positives). At the same time, it missed 40 patients who should have been identified as high risk (false negatives), and accurately classified 810 patients as low-risk when they truly were (true negatives).
+Based on this distribution, two key metrics were computed. Precision—the proportion of predicted high-risk patients who were correctly identified—stood at 0.80. This means that 80% of patients flagged by the model were genuinely at risk of readmission. Recall—the proportion of actual high-risk cases that the model successfully captured—was calculated at 0.75, indicating that 75% of those who were actually readmitted were correctly identified by the system.
+Together, these figures reflect a well-performing model in the clinical context. It effectively detects the majority of high-risk patients while limiting false alarms, making it a valuable support tool for targeting follow-up care and resource allocation.
+Interpretability
+Interpretability was a key reason for choosing the XGBoost model. As task notes, “feature importance scores help clinicians understand drivers of readmission, aiding trust and acceptance.” This highlights the need not just for accuracy, but for clear, explainable predictions.
+XGBoost handles missing EHR values and nonlinear patterns efficiently, reducing preprocessing efforts. Crucially, it outputs ranked feature importance, helping clinicians see which factors—like comorbidities or discharge status—contributed most to a prediction.
+These explanations are built into deployment, with risk insights integrated into clinician dashboards. This ensures predictions are not just accurate, but transparent and actionable—reinforcing clinical confidence and responsible care.
+
+# Limitations
+Task 3 highlights several resource constraints that influenced model deployment. Because the model runs on a private hospital Kubernetes cluster, computational capacity is limited compared to public cloud infrastructure. This necessitates the use of lightweight models like XGBoost, which can deliver real-time predictions without overwhelming system resources. In addition, strict regulatory requirements under HIPAA—such as data encryption, access controls, and audit logging—introduce technical overhead that must be accounted for during deployment. The system’s reliance on Docker containers and secure APIs also assumes a skilled IT workforce, which may not be readily available in all settings.
+Model selection was likewise shaped by contextual limitations. While more complex models might offer marginal gains in accuracy, the clinical setting required a high degree of interpretability. XGBoost was favored because it handles missing values and nonlinear patterns common in EHR data, and it provides feature importance scores that can be communicated to clinicians via dashboards. This level of transparency was essential to promote clinician trust and integrate seamlessly into decision support workflows. Additionally, models requiring heavy preprocessing or lacking explainability were excluded, as they would have undermined the goals of transparency, maintainability, and real-world integration into the hospital's existing infrastructure.
+
+
